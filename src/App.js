@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
+import { Card } from './components/Card/Card';
 import { Main } from './components/Main/Main';
 
 
@@ -12,7 +13,13 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Route path="/" component={Main}></Route>
+      <div className="container">
+        <Switch>
+        <Route exact path="/" component={Main}/>
+        <Route exact path="/card" component={Card}/>
+        <Redirect to="/" />
+        </Switch>
+      </div>
       </BrowserRouter>
     </div>
   );
